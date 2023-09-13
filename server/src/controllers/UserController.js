@@ -1,9 +1,6 @@
 module.exports = {
 
-    // Show user by id
-    show(req, res) {
-        res.send('ดูข้อมูลผู้ใช้งาน ' + req.params.userId + ' : ' + JSON.stringify(req.body));
-    },
+   
     
     // Get all users
     index(req, res) {
@@ -23,7 +20,12 @@ module.exports = {
     // Delete user
     delete(req, res) {
         res.send('ทำการลบผู้ใช้งาน:' + req.params.userId + ' : ' + JSON.stringify(req.body));
-    }
+    },
+
+     // Show user by id
+     show(req, res) {
+        res.send('ดูข้อมูลผู้ใช้งาน ' + req.params.userId + ' : ' + JSON.stringify(req.body));
+    },
 
 };
 
