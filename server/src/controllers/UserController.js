@@ -2,8 +2,6 @@ const { User } = require('../models')
 
 module.exports = {
 
-
-
     // Get all users
     async index(req, res) {
         try {
@@ -47,7 +45,26 @@ module.exports = {
 
     // Delete user
     // res.send('ทำการลบผู้ใช้งาน:' + req.params.userId + ' : ' + JSON.stringify(req.body));
-    delete(req, res) {
+    // delete user
+    async remove(req, res) {
+        try {
+            const user = await User.findOne({
+                where: {
+                    id: req.params.userId
+                }
+            })
+            if (!user) {
+                return res.status(403).send({
+                    error: 'The user information was incorrect'
+                })
+            }
+            await user.destroy()
+            res.send(user)
+        } catch (err) {
+            res.status(500).send({
+                error: 'The user information was incorrect'
+            })
+        }
     },
 
     // Show user by id
